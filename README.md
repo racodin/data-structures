@@ -17,3 +17,9 @@ npm run queue
 ```javascript
 npm run linkedList
 ```
+
+## Binary Search Tree tests
+
+```javascript
+npm run BST
+```

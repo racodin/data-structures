@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "stack": "node Stack/index.js",
     "queue": "node Queue/index.js",
-    "linkedList": "node LinkedList/index.js"
+    "linkedList": "node LinkedList/index.js",
+    "bst": "node Tree/index.js"
   },
   "type": "module",
   "keywords": [],
