@@ -3,30 +3,28 @@
 const LinkedList = require('./LinkedList.js');
 
 function reverse(list) {
-  let previousNode = null;
-  let currentNode = list.getHead(); // The current node
-  let nextNode = null; // The next node in the list
+  let prev = null;
+  let current = list.head; 
+  let next = null;
 
-  //Reversal
-  while (currentNode != null) {
-    nextNode = currentNode.next;
-    currentNode.next = previousNode;
-    previousNode = currentNode;
-    currentNode = nextNode;
+  while (current != null) {
+    next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
   }
 
-  //Set the last element as the new head node
-  list.setHead(previousNode);
+  list.head = prev;
 
 }
 
 let list = new LinkedList();
-list.insertAt(4, 0);
-list.insertAt(9, 0);
-list.insertAt(6, 0);
-list.insertAt(1, 0);
-list.insertAt(0, 0);
-list.printList();
+list.add(4);
+list.add(9);
+list.add(6);
+list.add(1);
+list.add(0);
+list.print();
 
 reverse(list);
-list.printList();
+list.print();

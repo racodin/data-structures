@@ -4,7 +4,7 @@ const Stack = require('./Stack.js');
 
 function isBalanced(exp){
   const myStack = new Stack();
-  for(var i=0; i<exp.length; i++){
+  for(let i=0; i<exp.length; i++){
     if(
       exp[i] == '}' || 
       exp[i] == ')' || 
@@ -15,8 +15,6 @@ function isBalanced(exp){
       }
 
       let output = myStack.pop();
-      // console.log("exp[i]:", exp[i]);
-      // console.log("output:", output);
       if (
         ((exp[i] == "}") && (output != "{")) || 
         ((exp[i] == ")") && (output != "(")) || 
@@ -27,7 +25,6 @@ function isBalanced(exp){
     } else {
       myStack.push(exp[i]);
     }
-    // console.log(myStack.data);
   }
   if (!myStack.isEmpty()) {
     return false
@@ -35,7 +32,7 @@ function isBalanced(exp){
   return true
 }
 
-var inputString = "{[()]}"
+let inputString = "{[()]}"
 console.log(inputString)              // {[()]}
 console.log(isBalanced(inputString))  // true
 

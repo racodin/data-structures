@@ -8,9 +8,9 @@ const LinkedList = (()=>{
     this.size = 0;
   }
   
-  LinkedList.prototype.insert = function(value){
-    var node = new Node(value); 
-    var current; 
+  LinkedList.prototype.add = function(value){
+    let node = new Node(value); 
+    let current; 
     if (this.head == null) 
       this.head = node; 
     else { 
@@ -27,8 +27,8 @@ const LinkedList = (()=>{
     if (index > 0 && index > this.size) 
       return false; 
     else { 
-      var node = new Node(value); 
-      var curr, prev; 
+      let node = new Node(value); 
+      let curr, prev; 
       curr = this.head; 
 
       if (index == 0) { 
@@ -36,7 +36,7 @@ const LinkedList = (()=>{
         this.head = node; 
       } else { 
         curr = this.head; 
-        var it = 0; 
+        let it = 0; 
         while (it < index) { 
           it++; 
           prev = curr; 
@@ -49,24 +49,77 @@ const LinkedList = (()=>{
     } 
   }
 
-  LinkedList.prototype.getHead = function(){
-    return this.head;
+  LinkedList.prototype.removedFrom = function(index){
+    if (index > 0 && index > this.size) 
+      return -1;
+    else {
+      let curr, prev, it = 0; 
+      curr = this.head; 
+      prev = curr; 
+
+      if (index === 0) { 
+        this.head = curr.next; 
+      } else { 
+        while (it < index) { 
+          it++; 
+          prev = curr; 
+          curr = curr.next; 
+        } 
+        prev.next = curr.next; 
+      } 
+      this.size--; 
+      
+      return curr.value; 
+    }
   }
 
-  LinkedList.prototype.setHead = function(value){
-    return this.head = value;
+  LinkedList.prototype.removeElement = function(value){
+    let current = this.head; 
+    let prev = null; 
+  
+    while (current != null) { 
+      if (current.value === value) { 
+        if (prev == null) { 
+          this.head = current.next; 
+        } else { 
+          prev.next = current.next; 
+        } 
+        this.size--; 
+        return current.value; 
+      } 
+      prev = current; 
+      current = current.next; 
+    } 
+    return -1; 
   }
 
-  LinkedList.prototype.printList = function(){
-    var curr = this.head; 
-    var str = ""; 
+  LinkedList.prototype.indexOf = function(value){
+    let count = 0; 
+    let current = this.head; 
+  
+    while (current != null) { 
+      if (current.value === value) 
+        return count; 
+      count++; 
+      current = current.next; 
+    } 
+  
+    return -1; 
+  }
+
+  LinkedList.prototype.isEmpty = function(){
+    return this.size == 0;
+  }
+
+  LinkedList.prototype.print = function(){
+    let curr = this.head; 
+    let str = ""; 
     while (curr) { 
       str += curr.value + " -> "; 
       curr = curr.next; 
     } 
     str += curr;
-    // console.log(this.head);
-    return console.log(str);
+    console.log(str);
   }
 
   return LinkedList;
